@@ -94,6 +94,19 @@ bool CircularLinkedList::listEmpty() {
 }
 
 bool CircularLinkedList::delNode() { //write your answer here
+	Node* triandri, * briliyan;
+	triandri = briliyan = NULL;
+	if (search(rollno, &triandri, &briliyan) == false)
+		return false;
+	if (briliyan->next != NULL)
+		briliyan->next->next = triandri;
+	if (triandri != NULL)
+		triandri->next = briliyan->next;
+	else
+		LAST = briliyan->next;
+
+	delete briliyan;
+	return true;
 }
 
 void CircularLinkedList::traverse() {
